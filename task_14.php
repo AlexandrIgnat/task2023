@@ -1,4 +1,9 @@
 <?php
+session_start();
+
+if ($_SERVER['REQUEST'] == 'POST') {
+    (int) $_SSESION['click'] += 1;
+} 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,9 +42,9 @@
                             <div class="panel-content">
                                 <div class="form-group">
                                     <div class="alert alert-info fade show" role="alert">
-                                        Кнопка была нажата: <b>0</b> раз
+                                        Кнопка была нажата: <b><?= isset($_SESSION['click']) ? $_SESSION['click'] : '0'?></b> раз
                                     </div>
-                                    <form action="">
+                                    <form method="POST">
                                         <button class="btn btn-success mt-3">Submit</button>
                                     </form>
                                 </div>
