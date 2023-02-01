@@ -1,11 +1,5 @@
 <?php
-session_start();
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    (int)$_SESSION['click'] += 1;
-
-    if ($_POST['restart_count']) unset($_SESSION['click']);
-} 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,14 +37,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <div class="panel-content">
                             <div class="panel-content">
                                 <div class="form-group">
-                                    <div class="alert alert-info fade show" role="alert">
-                                        Кнопка была нажата: <b><?= isset($_SESSION['click']) ? $_SESSION['click'] : '0'?></b> раз
+                                    <div class="alert alert-danger fade show" role="alert">
+                                        Неверный логин или пароль
                                     </div>
-                                    <form method="POST">
-                                        <button class="btn btn-success mt-3">Submit</button>
-                                    </form>
-                                    <form method="POST">
-                                        <input type="text" value="1" hidden name="restart_count">
+                                    <form action="">
+                                        <div class="form-group">
+                                        	<label class="form-label" for="simpleinput">Email</label>
+                                        <input type="text" id="simpleinput" class="form-control">
+                                        </div>
+
+                                        <label class="form-label" for="simpleinput">Password</label>
+                                        <input type="password" id="simpleinput" class="form-control">
                                         <button class="btn btn-success mt-3">Submit</button>
                                     </form>
                                 </div>
